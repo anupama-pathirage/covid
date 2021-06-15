@@ -1,7 +1,6 @@
 import wso2/choreo.sendemail;
 import ballerinax/worldbank;
 import ballerinax/covid19;
-import ballerina/io;
 
 public function main() returns error? {
 
@@ -19,9 +18,8 @@ public function main() returns error? {
     var newCasesPerMillion = todayCases / population;
  
     string mailBody = string `New Cases Per Million Data: ${newCasesPerMillion}`;
-    io:println(mailBody);
 
     sendemail:Client sendemailEndpoint = check new ();
-    string sendEmailResponse = check sendemailEndpoint->sendEmail("ramith@wso2.com", "Daily Covid Status in USA", 
+    string sendEmailResponse = check sendemailEndpoint->sendEmail("anupama@wso2.com", "Daily Covid Status in USA", 
     mailBody);
 }
