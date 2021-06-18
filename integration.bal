@@ -9,11 +9,9 @@ public function main() returns error? {
     var totalCases = statusByCountry?.cases ?: 0d;
     worldbank:Client worldBankClient = check new ();
 
-    worldbank:CountryPopulationArr? populationByCountry = check worldBankClient->getPopulationByCountry("USA", "2019", 
-    format = "json");
+    worldbank:CountryPopulation[] populationByCountry = check worldBankClient->getPopulationByCountry("USA", "2019");
 
-    int population = 
-    (populationByCountry is worldbank:CountryPopulationArr ? populationByCountry[0]?.value ?: 0 : 0) / 1000000;
+    int population = populationByCountry[0]?.value ?: 0 /1000000;
 
     var totalCasesPerMillion = totalCases / population;
  
